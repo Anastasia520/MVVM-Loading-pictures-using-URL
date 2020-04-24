@@ -1,0 +1,45 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TestTask"
+        xmlns:ViewControls="clr-namespace:TestTask.Controls.ViewControls" x:Class="TestTask.MainWindow"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="541" Width="801">
+
+    <Window.Resources>
+        <Style x:Key="UserControlStyle">
+            <Setter Property="UserControl.Height" Value="400" />
+            <Setter Property="UserControl.VerticalAlignment" Value="Top" />
+            <Setter Property="UserControl.HorizontalAlignment" Value="Left" />
+            <Setter Property="UserControl.Width" Value="267" />
+
+        </Style>
+    </Window.Resources>
+    <Grid Height="501" Width="801">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <ViewControls:UserControlPart x:Name="Control1" Grid.Column="0" Style="{StaticResource UserControlStyle}" DataContext="{Binding Path=Control1}"/>
+        <ViewControls:UserControlPart x:Name="Control2" Grid.Column="1" Style="{StaticResource UserControlStyle}" DataContext="{Binding Path=Control2}"/>
+        <ViewControls:UserControlPart x:Name="Control3" Grid.Column="2" Style="{StaticResource UserControlStyle}" DataContext="{Binding Path=Control3}"/>
+        <Button x:Name="btnStartAll" Command="{Binding BtnAllStart}" Grid.ColumnSpan="3" Content="ЗАГРУЗИТЬ ВСЕ"   Margin="0,300,0,0" Width="200" Height="37"
+                FontSize ="17"  Foreground="White" FontFamily="Verdana" Cursor="Hand" Background ="#24752C"/>
+        <ProgressBar x:Name="pbStatus" Value="{Binding Path=CurrentProgress, Mode=OneWay}"  Grid.ColumnSpan="3" Minimum="0" Maximum="100" HorizontalAlignment="Left" Height="18" Margin="185,443,0,0" VerticalAlignment="Top" Width="418"/>
+        <Label x:Name="lblLoad"  Grid.ColumnSpan="3" Content="Загружено:" FontSize="12" Foreground="Black" FontFamily="Verdana"
+               HorizontalAlignment="Left" VerticalAlignment="Top" Margin="296,466,0,0"/>
+        <Label x:Name="checkProgress" Content="{Binding Path=CurrentValue, Mode=OneWay}" FontSize="12" Foreground="Black" FontFamily="Verdana"  
+               HorizontalAlignment="Left" VerticalAlignment="Top" Margin="115.8,466,0,0" Grid.Column="1"/>
+        <Label x:Name="allProgress" Content="{Binding Path=AllSize, Mode=OneWay,UpdateSourceTrigger=PropertyChanged}" FontSize="12" Foreground="Black" FontFamily="Verdana"  
+               HorizontalAlignment="Left" VerticalAlignment="Top" Margin="164.8,466,0,0" Grid.Column="1"/>
+
+
+
+
+
+
+    </Grid>
+</Window>
